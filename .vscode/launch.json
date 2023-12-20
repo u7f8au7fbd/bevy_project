@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'bevy_project'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bevy_project",
+                    "--package=bevy_project"
+                ],
+                "filter": {
+                    "name": "bevy_project",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PATH": "${env:USERPROFILE}/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/bin;${workspaceFolder}/target/debug/deps;${env:PATH}",
+            },
+        }
+    ]
+}
