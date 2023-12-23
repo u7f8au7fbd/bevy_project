@@ -1,0 +1,1 @@
+Bevyでdynamic_linkingを有効にしたプロジェクトのテンプレートです．
