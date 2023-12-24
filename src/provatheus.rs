@@ -14,7 +14,7 @@ pub fn enable_visible(mut window: Query<&mut Window>, frames: Res<FrameCount>) {
 }
 
 pub fn gizmos_xyz(mut gizmos: Gizmos, mut config: ResMut<GizmoConfig>) {
-    let grid_scale = 64.0;
+    let grid_scale =4096.0;
     config.depth_bias = -1.0;
     config.line_width = 0.2;
 
