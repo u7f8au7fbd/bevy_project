@@ -21,7 +21,7 @@ fn main() {
             }),
             ..default()
         }))
-        .insert_resource(ClearColor(Color::rgb_u8(0, 0, 0))) //デフォルトの背景色を設定
+        .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .add_systems(Update, (provatheus::enable_visible, provatheus::gizmos_xyz)) //Provatheus用の開発用ライブラリ
         .add_plugins(ScreenDiagnosticsPlugin::default())
         .add_plugins(ScreenFrameDiagnosticsPlugin)
