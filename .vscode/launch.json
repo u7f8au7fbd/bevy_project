@@ -19,6 +19,7 @@
             "args": [],
             "cwd": "${workspaceFolder}",
             "env": {
+                "BEVY_ASSET_ROOT": "${workspaceFolder}",
                 "PATH": "${env:USERPROFILE}/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/bin;${workspaceFolder}/target/debug/deps;${env:PATH}",
             },
         }
