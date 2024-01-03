@@ -27,8 +27,8 @@ fn main() {
         )
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .add_systems(Update, (provatheus::enable_visible, provatheus::gizmos_xyz)) //Provatheus用の開発用ライブラリ
-        .add_plugins(ScreenDiagnosticsPlugin::default())
-        .add_plugins(ScreenFrameDiagnosticsPlugin)
+        .add_plugins(ScreenDiagnosticsPlugin::default()) //FPS計測プラグイン
+        .add_plugins(ScreenFrameDiagnosticsPlugin) //FPS表示プラグイン
         //以上は固定
         .run();
 }
