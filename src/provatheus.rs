@@ -1,4 +1,11 @@
-use bevy::{core::FrameCount, prelude::*};
+use bevy::{
+    core::FrameCount,
+    ecs::system::{Query, Res, ResMut},
+    gizmos::{gizmos::Gizmos, GizmoConfig},
+    math::Vec3,
+    render::color::Color,
+    window::Window,
+};
 
 pub fn enable_visible(mut window: Query<&mut Window>, frames: Res<FrameCount>) {
     if frames.0 == 3 {
