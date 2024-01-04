@@ -1,7 +1,7 @@
+//#![windows_subsystem = "windows"]
 use bevy::{prelude::*, window::*};
 use bevy_screen_diagnostics::*;
 mod provatheus;
-
 fn main() {
     App::new()
         .add_plugins(
@@ -26,7 +26,7 @@ fn main() {
                 .set(ImagePlugin::default_nearest()), //デフォルトの画像処理をピクセルパーフェクトに設定
         )
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
-        .insert_resource(Msaa::Off)
+        .insert_resource(Msaa::Off) //MSAAを無効化
         .add_systems(Update, (provatheus::enable_visible, provatheus::gizmos_xyz)) //Provatheus用の開発用ライブラリ
         .add_plugins(ScreenDiagnosticsPlugin::default()) //FPS計測プラグイン
         .add_plugins(ScreenFrameDiagnosticsPlugin) //FPS表示プラグイン

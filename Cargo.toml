@@ -2,12 +2,8 @@
 name = "bevy_project"
 version = "0.0.0"
 edition = "2021"
-
 [dependencies]
 bevy = { version = "0.12.1", features = ["dynamic_linking"] }
-bevy_common_assets = { version = "0.8.0", features = ["toml"] }
-bevy_xpbd_2d = "0.3.2"
-bevy_xpbd_3d = "0.3.2"
 bevy_screen_diagnostics = "0.4.0"
 [profile.dev]
 opt-level = 1
