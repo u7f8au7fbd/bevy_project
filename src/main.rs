@@ -26,6 +26,7 @@ fn main() {
                 .set(ImagePlugin::default_nearest()), //デフォルトの画像処理をピクセルパーフェクトに設定
         )
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
+        .insert_resource(Msaa::Off)
         .add_systems(Update, (provatheus::enable_visible, provatheus::gizmos_xyz)) //Provatheus用の開発用ライブラリ
         .add_plugins(ScreenDiagnosticsPlugin::default()) //FPS計測プラグイン
         .add_plugins(ScreenFrameDiagnosticsPlugin) //FPS表示プラグイン
