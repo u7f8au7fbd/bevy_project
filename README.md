@@ -6,5 +6,5 @@
 ※Rustのnightly版をインストールしている必要があります.
 
 > [!IMPORTANT]
-> テンプレート作成後は，Cargo.toml内部のnameをワークスペースの名前に変更してください.
-launch.jsonは自動でワークスペースの名前から実行するためCargo.tomlのnameとワークスペースの名前は同じである必要があります.  
+> launch.json内部の "filter"の"name"とCargo.tomlのnameは手動で設定する必要があり,
+>ワークスペースの名前は同じ名前である必要があります.

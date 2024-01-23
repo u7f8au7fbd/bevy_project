@@ -1,6 +1,8 @@
 //#![windows_subsystem = "windows"]
 use bevy::{prelude::*, window::*};
 use bevy_screen_diagnostics::*;
+use bevy_simple_tilemap::prelude::*;
+use provatheus::*;
 mod provatheus;
 fn main() {
     App::new()
@@ -27,9 +29,19 @@ fn main() {
         )
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .insert_resource(Msaa::Off) //MSAAを無効化
-        .add_systems(Update, (provatheus::enable_visible, provatheus::gizmos_xyz)) //Provatheus用の開発用ライブラリ
-        .add_plugins(ScreenDiagnosticsPlugin::default()) //FPS計測プラグイン
-        .add_plugins(ScreenFrameDiagnosticsPlugin) //FPS表示プラグイン
+        .add_plugins((
+            ProvatheusPlugin,                   //プロヴァテウスプラグイン
+            SimpleTileMapPlugin,                //タイルマッププラグイン
+            ScreenDiagnosticsPlugin::default(), //診断データプラグイン
+            ScreenFrameDiagnosticsPlugin,       //FPS表示プラグイン
+        ))
         //以上は固定
+        .add_systems(Startup, set_camera) //カメラを生成
         .run();
+}
+
+#[derive(Component)]
+struct MainCamera;
+fn set_camera(mut commands: Commands) {
+    commands.spawn((MainCamera, Camera2dBundle { ..default() }));
 }

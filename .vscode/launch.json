@@ -12,7 +12,7 @@
                     "--package=${workspaceFolderBasename}"
                 ],
                 "filter": {
-                    "name": "${workspaceFolderBasename}",
+                    "name": "bevy_project",
                     "kind": "bin"
                 }
             },

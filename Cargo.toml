@@ -5,6 +5,7 @@ edition = "2021"
 [dependencies]
 bevy = { version = "*", features = ["dynamic_linking"] }
 bevy_screen_diagnostics = "*"
+bevy_simple_tilemap = "*"
 [profile.dev]
 opt-level = 1
 [profile.dev.package."*"]
