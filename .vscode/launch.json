@@ -4,15 +4,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'bevy_project'",
+            "name": "Debug executable '${workspaceFolderBasename}'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=bevy_project",
-                    "--package=bevy_project"
+                    "--bin=${workspaceFolderBasename}",
+                    "--package=${workspaceFolderBasename}"
                 ],
                 "filter": {
-                    "name": "bevy_project",
+                    "name": "${workspaceFolderBasename}",
                     "kind": "bin"
                 }
             },
@@ -20,7 +20,7 @@
             "cwd": "${workspaceFolder}",
             "env": {
                 "BEVY_ASSET_ROOT": "${workspaceFolder}",
-                "PATH": "${env:USERPROFILE}/.rustup/toolchains/stable-x86_64-pc-windows-msvc/bin;${workspaceFolder}/target/debug/deps;${env:PATH}",
+                "PATH": "${env:USERPROFILE}/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/bin;${workspaceFolder}/target/debug/deps;${env:PATH}",
             },
         }
     ]
