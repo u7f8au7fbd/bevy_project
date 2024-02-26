@@ -4,12 +4,13 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable '${workspaceFolderBasename}'",
+            "name": "Debug",
             "cargo": {
                 "args": [
                     "build",
                     "--bin=${workspaceFolderBasename}",
-                    "--package=${workspaceFolderBasename}"
+                    "--package=${workspaceFolderBasename}",
+                    "--features=bevy/dynamic_linking"
                 ],
                 "filter": {
                     "name": "bevy_project",

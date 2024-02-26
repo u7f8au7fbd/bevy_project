@@ -1,7 +1,5 @@
 //#![windows_subsystem = "windows"]
-use bevy::{prelude::*, window::*};
-use bevy_screen_diagnostics::*;
-use bevy_simple_tilemap::prelude::*;
+use bevy::{diagnostic::FrameTimeDiagnosticsPlugin, prelude::*, window::*};
 use provatheus::*;
 mod provatheus;
 fn main() {
@@ -13,7 +11,7 @@ fn main() {
                         title: "Bevy".into(),                                          //タイトル
                         resolution: (1280.0, 960.0).into(), //ウィンドウサイズ
                         position: WindowPosition::Centered(MonitorSelection::Primary), //ウィンドウの生成座標を中心に設定
-                        present_mode: PresentMode::Fifo,                               //Vsync有効
+                        present_mode: PresentMode::AutoNoVsync,                        //Vsync有効
                         resizable: false, //サイズ変更不可
                         enabled_buttons: bevy::window::EnabledButtons {
                             minimize: false, //最小化無効
@@ -30,10 +28,8 @@ fn main() {
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .insert_resource(Msaa::Off) //MSAAを無効化
         .add_plugins((
-            ProvatheusPlugin,                   //プロヴァテウスプラグイン
-            SimpleTileMapPlugin,                //タイルマッププラグイン
-            ScreenDiagnosticsPlugin::default(), //診断データプラグイン
-            ScreenFrameDiagnosticsPlugin,       //FPS表示プラグイン
+            ProvatheusPlugin, //プロヴァテウスプラグイン
+            FrameTimeDiagnosticsPlugin,
         ))
         //以上は固定
         .add_systems(Startup, set_camera) //カメラを生成
