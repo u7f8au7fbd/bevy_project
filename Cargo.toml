@@ -4,6 +4,7 @@ version = "0.0.0"
 edition = "2021"
 [dependencies]
 bevy = { version = "*", features = ["dynamic_linking"] }
+bevy_egui = "*"
 [profile.dev]
 opt-level = 1
 [profile.dev.package."*"]

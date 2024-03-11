@@ -11,6 +11,26 @@ pub fn enable_visible(mut window: Query<&mut Window>, frames: Res<FrameCount>) {
     }
 }
 
+pub fn summon_grid(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let grid_size = 16.;
+    commands.spawn((
+        SpriteBundle {
+            transform: Transform {
+                translation: Vec3::new(0., 0., -256.),
+                scale: Vec3::new(16., 16., 0.),
+                ..default()
+            },
+            texture: asset_server.load("provatheus/grid.png"),
+            ..default()
+        },
+        ImageScaleMode::Tiled {
+            tile_x: true,
+            tile_y: true,
+            stretch_value: 1. / grid_size,
+        },
+    ));
+}
+
 #[derive(Component)]
 pub struct FpsText;
 
@@ -87,6 +107,6 @@ pub struct StartupPlugin;
 
 impl Plugin for StartupPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, set_text);
+        app.add_systems(Startup, (set_text, summon_grid));
     }
 }
