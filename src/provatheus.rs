@@ -5,6 +5,15 @@ use bevy::{
     prelude::*,
 };
 
+use std::process::Command;
+
+pub fn set_utf8() {
+    Command::new("cmd")
+        .args(["/C", "chcp 65001"])
+        .output()
+        .expect("UTF-8に設定できませんでした");
+}
+
 pub fn enable_visible(mut window: Query<&mut Window>, frames: Res<FrameCount>) {
     if frames.0 == 3 {
         window.single_mut().visible = true;
@@ -107,6 +116,6 @@ pub struct StartupPlugin;
 
 impl Plugin for StartupPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (set_text, summon_grid));
+        app.add_systems(Startup, (set_utf8, set_text, summon_grid));
     }
 }
