@@ -29,7 +29,7 @@ pub fn summon_grid(mut commands: Commands, asset_server: Res<AssetServer>) {
                 scale: Vec3::new(16., 16., 0.),
                 ..default()
             },
-            texture: asset_server.load("provatheus/grid.png"),
+            texture: asset_server.load("provatheusgrid.png"),
             ..default()
         },
         ImageScaleMode::Tiled {
