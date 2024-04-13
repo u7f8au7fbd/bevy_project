@@ -1,7 +1,6 @@
 //#![windows_subsystem = "windows"]
 use bevy::{diagnostic::FrameTimeDiagnosticsPlugin, prelude::*, window::*};
-use provatheus::*;
-mod provatheus;
+mod initialize;
 fn main() {
     App::new()
         .add_plugins(
@@ -28,7 +27,7 @@ fn main() {
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .insert_resource(Msaa::Off) //MSAAを無効化
         .add_plugins((
-            ProvatheusPlugin, //プロヴァテウスプラグイン
+            initialize::InitializePlugin, //プロヴァテウスプラグイン
             FrameTimeDiagnosticsPlugin,
         ))
         //以上は固定
