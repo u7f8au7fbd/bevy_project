@@ -36,13 +36,12 @@ fn main() {
             InfiniteGridPlugin,                 //グリッドを表示
         ))
         //以上は固定
-        .add_systems(Startup, set_camera) //カメラを生成
+        .add_systems(Startup, example) 
         .run();
 }
 
-#[derive(Component)]
-struct MainCamera;
-fn set_camera(mut commands: Commands) {
+//例
+fn example(mut commands: Commands) {
     //グリッドを生成
     commands.spawn(InfiniteGridBundle::default());
     //ライトを生成
