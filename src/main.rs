@@ -1,5 +1,8 @@
 //#![windows_subsystem = "windows"]
 
+#[macro_use]
+mod macros;
+
 use bevy::{prelude::*, window::*};
 use bevy_infinite_grid::{InfiniteGridBundle, InfiniteGridPlugin};
 use bevy_screen_diagnostics::{ScreenDiagnosticsPlugin, ScreenFrameDiagnosticsPlugin};
@@ -30,10 +33,10 @@ fn main() {
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .insert_resource(Msaa::Off) //MSAAを無効化
         .add_plugins((
-            initialize::InitializePlugin,       //初期処理
-            //ScreenDiagnosticsPlugin::default(), //診断情報を表示
-            //ScreenFrameDiagnosticsPlugin,       //フレームレートを表示
-           //InfiniteGridPlugin,                 //グリッドを表示
+            initialize::InitializePlugin, //初期処理
+                                          //ScreenDiagnosticsPlugin::default(), //診断情報を表示
+                                          //ScreenFrameDiagnosticsPlugin,       //フレームレートを表示
+                                          //InfiniteGridPlugin,                 //グリッドを表示
         ))
         //以上は固定
         .add_systems(Startup, summon)
