@@ -60,7 +60,7 @@ pub fn summon(
     let default_fov = 70.53_f32.to_radians(); //デフォルトの垂直視野角70.53度(水平視野角は103度)
     commands
         .spawn((
-            InheritedVisibility::default(),//描画オブジェクト
+            InheritedVisibility::default(), //描画オブジェクト
             Player,
             Camera3dBundle {
                 transform: Transform::from_xyz(0.0, 4.0, 40.0),
@@ -71,7 +71,7 @@ pub fn summon(
                 ..default()
             },
             FogSettings {
-                color: Color::rgba(0., 0., 0., 1.0),
+                color: Color::srgba(0., 0., 0., 1.0),
                 falloff: FogFalloff::Linear {
                     start: 20.0,
                     end: 48.0,
@@ -86,7 +86,7 @@ pub fn summon(
         .with_children(|interacter| {
             interacter.spawn((PbrBundle {
                 mesh: meshes.add(Cuboid::new(0.05, 0.05, 0.05)),
-                material: materials.add(Color::rgb(1., 1., 1.)),
+                material: materials.add(Color::srgb(1., 1., 1.)),
                 transform: Transform {
                     translation: Vec3::new(0.0, 0.0, -4.0),
                     ..default()
