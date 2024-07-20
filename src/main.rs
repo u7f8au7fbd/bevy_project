@@ -6,8 +6,8 @@ mod macros;
 use bevy::{prelude::*, window::*};
 use bevy_infinite_grid::{InfiniteGridBundle, InfiniteGridPlugin};
 use bevy_screen_diagnostics::{ScreenDiagnosticsPlugin, ScreenFrameDiagnosticsPlugin};
-mod initialize;
 fn main() {
+    cmd!(utf8); //UTF-8を有効化
     App::new()
         .add_plugins(
             DefaultPlugins
@@ -23,7 +23,6 @@ fn main() {
                             maximize: false, //最大化無効
                             close: true,     //閉じる有効
                         },
-                        visible: false, //非表示
                         ..default()
                     }),
                     ..default()
@@ -33,10 +32,9 @@ fn main() {
         .insert_resource(ClearColor(Color::NONE)) //デフォルトの背景色を設定
         .insert_resource(Msaa::Off) //MSAAを無効化
         .add_plugins((
-            initialize::InitializePlugin, //初期処理
-                                          //ScreenDiagnosticsPlugin::default(), //診断情報を表示
-                                          //ScreenFrameDiagnosticsPlugin,       //フレームレートを表示
-                                          //InfiniteGridPlugin,                 //グリッドを表示
+            ScreenDiagnosticsPlugin::default(), //診断情報を表示
+            ScreenFrameDiagnosticsPlugin,       //フレームレートを表示
+            InfiniteGridPlugin,                 //グリッドを表示
         ))
         //以上は固定
         .add_systems(Startup, summon)
@@ -52,8 +50,7 @@ pub fn summon(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    //commands.spawn(InfiniteGridBundle::default());
-
+    commands.spawn(InfiniteGridBundle::default());
     commands.spawn(DirectionalLightBundle {
         transform: Transform::from_translation(Vec3::ONE).looking_at(Vec3::ZERO, Vec3::Y),
         ..default()
